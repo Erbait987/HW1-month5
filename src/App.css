@@ -22,6 +22,38 @@ button {
   margin-right: 10px;
   margin-bottom: 20px;
 }
+.navbar {
+  position: relative;
+  width: 800px;
+  top: 0;
+}
+.menu {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 40px;
+  justify-content: space-between;
+}
+.delete {
+  width: 300px;
+  height: 200px;
+  background-color: #333;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 45px;
+}
+.delete-flex {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+.delete p {
+  color: #fff;
+  font-size: 16px;
+}
+
+.red {
+  background-color: red;
+}
 
 .geeks__logo--footer {
   font-size: 32px;

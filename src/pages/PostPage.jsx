@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../App.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const PostPage = () => {
   const [post, setPost] = useState({
@@ -9,7 +10,7 @@ const PostPage = () => {
     description: "",
   });
 
-  const [result, setResult] = useState(null);
+  const navigate = useNavigate();
 
   const handleInput = (e) => {
     setPost({ ...post, [e.target.name]: e.target.value });
@@ -17,12 +18,12 @@ const PostPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(post);
+
     axios
       .post("https://dummyjson.com/products/add", post)
       .then((res) => {
-        console.log(res);
-        setResult(res.data);
+        console.log(res.data);
+        navigate("/get");
       })
       .catch((err) => console.log(err));
   };
@@ -34,25 +35,16 @@ const PostPage = () => {
         <input
           type="text"
           placeholder="Add title"
-          onChange={handleInput}
           name="title"
+          onChange={handleInput}
         />
         <input
           type="text"
           placeholder="Add text"
-          onChange={handleInput}
           name="description"
+          onChange={handleInput}
         />
         <button onClick={handleSubmit}>Отправить запрос </button>
-      </div>
-      <div>
-        {result && (
-          <div className="postResult">
-            <h2>Результат:</h2>
-            <p>Title: {result.title}</p>
-            <p>Description: {result.description}</p>
-          </div>
-        )}
       </div>
     </>
   );
